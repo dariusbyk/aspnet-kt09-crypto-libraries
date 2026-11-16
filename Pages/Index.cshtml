@@ -1,0 +1,46 @@
+@page
+@model CryptoLibraries.Pages.IndexModel
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Библиотеки шифрования</title>
+</head>
+<body>
+    <h1>Библиотеки шифрования</h1>
+    <form method="post">
+        <p><label asp-for="Text">Введите текст:</label></p>
+        <textarea asp-for="Text" rows="6" cols="65"></textarea>
+        <p>
+            <label asp-for="Library">Библиотека:</label>
+            <select asp-for="Library">
+                <option value="BouncyCastle">Bouncy Castle — AES-GCM</option>
+                <option value="Libsodium">Libsodium — SecretBox</option>
+            </select>
+        </p>
+        <p>Ключ создаётся автоматически. После шифрования выполняется обратное дешифрование для проверки.</p>
+        <button type="submit">Зашифровать и проверить</button>
+    </form>
+
+    @if (Model.Error != null)
+    {
+        <p>@Model.Error</p>
+    }
+    @if (Model.Result != null)
+    {
+        <h2>Зашифрованные данные (Base64)</h2>
+        <textarea rows="6" cols="65" readonly>@Model.Result.EncryptedText</textarea>
+        <h2>Расшифрованный текст</h2>
+        <textarea rows="6" cols="65" readonly>@Model.Result.DecryptedText</textarea>
+        @if (Model.Result.DecryptedText == Model.Text)
+        {
+            <p>Проверка пройдена: текст совпадает с исходным.</p>
+        }
+        else
+        {
+            <p>Ошибка: текст не совпадает с исходным.</p>
+        }
+    }
+</body>
+</html>
