@@ -1,13 +1,9 @@
-# \# aspnet-kt09-crypto-libraries
+# aspnet-kt09-crypto-libraries
 
-# 
+# Описание
 
-# \## Описание
+![Описание](screenshots/0.png)
 
-# !\[Описание](screenshots/0.png)
+# Результат
 
-# 
-
-# \## Результат
-
-# !\[Результат 1](screenshots/1.png)
+![Результат 1](screenshots/1.png)
